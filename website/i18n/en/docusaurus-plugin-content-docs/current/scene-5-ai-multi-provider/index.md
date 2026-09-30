@@ -1,5 +1,5 @@
 ---
-title: "Scene 5: Gemini round-robin / failover"
+title: "Scene 5: LLM model round-robin / failover"
 ---
 
 ## Purpose
