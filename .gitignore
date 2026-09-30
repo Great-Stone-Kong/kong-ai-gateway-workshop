@@ -35,3 +35,8 @@ Thumbs.db
 *.log
 tmp/
 temp/
+
+# Docusaurus
+website/node_modules/
+website/build/
+website/.docusaurus/
