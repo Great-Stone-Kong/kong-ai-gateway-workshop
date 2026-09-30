@@ -38,7 +38,7 @@ export WORKSHOP_LLM_BASE_URL=...
 export WORKSHOP_LLM_APIKEY=sk-kong-workshop
 ```
 
-## 씬 (~3.5시간)
+## 실습 (~3.5시간)
 
 | Scene | 초점 | 시간 |
 |---|---|---|
@@ -61,11 +61,11 @@ export WORKSHOP_LLM_APIKEY=sk-kong-workshop
       → Scene 6: Anthropic Messages → Workshop `/v1/messages` (Claude Code BASE URL)
 ```
 
-## 씬 진행 방법
+## 실습 진행 방법
 
 1. [Scene 0](/docs/scene-0-orientation)을 완료합니다.
-2. 씬 폴더의 `README.md` / `README_KO.md`를 따릅니다.
-3. 학습은 Konnect UI를 우선하고, 씬에 `config.yaml`이 있으면 decK를 사용합니다.
+2. 실습 폴더의 `README.md` / `README_KO.md`를 따릅니다.
+3. 학습은 Konnect UI를 우선하고, 실습에 `config.yaml`이 있으면 decK를 사용합니다.
 4. API 호출은 `$KONNECT_PROXY_URL`(Serverless proxy)로 합니다.
 
 ## 운영자 부록
