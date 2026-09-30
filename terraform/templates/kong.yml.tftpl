@@ -1,0 +1,139 @@
+_format_version: "3.0"
+
+services:
+  - name: openai
+    url: https://api.openai.com
+    routes:
+      - name: openai
+        paths:
+          - /openai
+        protocols:
+          - http
+          - https
+        strip_path: true
+    plugins:
+      - name: key-auth
+        config:
+          key_names:
+            - apikey
+          hide_credentials: true
+      - name: rate-limiting
+        config:
+          minute: ${rate_limit_minute}
+          policy: local
+          limit_by: consumer
+          fault_tolerant: true
+      - name: ai-proxy-advanced
+        config:
+          llm_format: openai
+          targets:
+            - route_type: llm/v1/chat
+              auth:
+                header_name: Authorization
+                header_value: "Bearer ${openai_api_key}"
+                allow_override: false
+              model:
+                provider: openai
+                name: "${openai_model}"
+
+  - name: gemini
+    url: https://generativelanguage.googleapis.com
+    routes:
+      - name: gemini
+        paths:
+          - /gemini
+        protocols:
+          - http
+          - https
+        strip_path: true
+    plugins:
+      - name: key-auth
+        config:
+          key_names:
+            - apikey
+          hide_credentials: true
+      - name: rate-limiting
+        config:
+          minute: ${rate_limit_minute}
+          policy: local
+          limit_by: consumer
+          fault_tolerant: true
+      - name: ai-proxy-advanced
+        config:
+          llm_format: openai
+          targets:
+            - route_type: llm/v1/chat
+              auth:
+                param_name: key
+                param_value: "${gemini_api_key}"
+                param_location: query
+                allow_override: false
+              model:
+                provider: gemini
+                name: "${gemini_model}"
+
+  # Anthropic Messages for Claude Code (format convert → OpenAI).
+  # Students proxy here from Konnect; do not run llm_format:anthropic on Serverless.
+  - name: anthropic-messages
+    url: https://api.openai.com
+    routes:
+      - name: anthropic-messages
+        paths:
+          - /v1/messages
+        protocols:
+          - http
+          - https
+        strip_path: false
+    plugins:
+      - name: key-auth
+        config:
+          key_names:
+            - apikey
+          hide_credentials: true
+      - name: rate-limiting
+        config:
+          minute: ${rate_limit_minute}
+          policy: local
+          limit_by: consumer
+          fault_tolerant: true
+      # Claude Code defaults max_tokens=32000; gpt-4o-mini caps completion at 16384.
+      - name: pre-function
+        config:
+          access:
+            - |
+              local cjson = require "cjson.safe"
+              local body = kong.request.get_raw_body()
+              if not body or body == "" then return end
+              local data = cjson.decode(body)
+              if type(data) ~= "table" then return end
+              local cap = 16384
+              if type(data.max_tokens) == "number" and data.max_tokens > cap then
+                data.max_tokens = cap
+                local new_body = cjson.encode(data)
+                kong.service.request.set_raw_body(new_body)
+                kong.service.request.set_header("Content-Length", tostring(#new_body))
+              end
+      - name: ai-proxy-advanced
+        config:
+          llm_format: anthropic
+          max_request_body_size: 524288
+          response_streaming: allow
+          targets:
+            - route_type: llm/v1/chat
+              auth:
+                header_name: Authorization
+                header_value: "Bearer ${openai_api_key}"
+                allow_override: false
+              model:
+                provider: openai
+                name: "${openai_model}"
+                model_alias: claude-sonnet-4-6
+                options:
+                  max_tokens: 16384
+
+consumers:
+%{ for c in consumers ~}
+  - username: ${c.username}
+    keyauth_credentials:
+      - key: "${c.key}"
+%{ endfor ~}

@@ -1,0 +1,37 @@
+# --- Terraform local state & credentials ---
+**/.terraform/
+**/.terraform.lock.hcl.bak
+**/terraform.tfstate
+**/terraform.tfstate.*
+**/terraform.tfvars
+**/*.tfvars
+!**/terraform.tfvars.example
+**/*.pem
+**/.aws-creds.env
+**/.generated/
+
+# --- Secrets / env ---
+.env
+.env.*
+!.env.example
+*.secret
+*.key
+!*.key.pub
+credentials.json
+**/license*.json
+**/*-license.json
+**/*kong*license*
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+*.code-workspace
+
+# --- Logs / temp ---
+*.log
+tmp/
+temp/

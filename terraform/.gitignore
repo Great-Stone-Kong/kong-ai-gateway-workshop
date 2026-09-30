@@ -1,0 +1,12 @@
+# Kept in sync with repo-root .gitignore (terraform module local artifacts).
+.terraform/
+terraform.tfstate
+terraform.tfstate.*
+terraform.tfvars
+*.tfvars
+!terraform.tfvars.example
+*.pem
+.aws-creds.env
+.generated/
+.env
+.env.*
