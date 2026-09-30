@@ -12,7 +12,7 @@ Kong Konnect 실습과 공유 **Workshop LLM** 허브로 구성된 AI Gateway �
 
 | 경로 | 역할 |
 |---|---|
-| [`workshop/`](./workshop/) | 실습자 시나리오 (Scene 0–6) |
+| [`docs/`](./docs/) | 실습자 시나리오 (Scene 0–6) |
 | [`terraform/`](./terraform/) | 운영자 공유 LLM 허브 (EC2 Kong EE DB-less) |
 
 ```text
@@ -29,22 +29,22 @@ Kong Konnect 실습과 공유 **Workshop LLM** 허브로 구성된 AI Gateway �
 
 | 대상 | 하는 일 | 문서 |
 |---|---|---|
-| **실습자** | Konnect Serverless + AI Proxy 구성 | [`workshop/README_KO.md`](./workshop/README_KO.md) |
+| **실습자** | Konnect Serverless + AI Proxy 구성 | [`docs/README_KO.md`](./docs/README_KO.md) |
 | **운영자** | 허브 apply · 패킷 배포 | [`terraform/README_KO.md`](./terraform/README_KO.md) |
 
 ## 시나리오
 
 | Scene | 초점 | 시간 |
 |---|---|---|
-| [0 Orientation](./workshop/scene-0-orientation/) | Konnect · Serverless · 패킷 env | ~25분 |
-| [1 Services & Routes](./workshop/scene-1-services-routes/) | httpbin Service / Route | ~25분 |
-| [2 Plugin](./workshop/scene-2-plugin/) | 기본 플러그인 | ~25분 |
-| [3 Auth](./workshop/scene-3-auth/) | Consumer + key-auth | ~25분 |
-| [4 AI Proxy → OpenAI](./workshop/scene-4-ai-proxy-openai/) | AI Proxy Advanced → `/openai` | ~45분 |
-| [5 Multi-provider LB](./workshop/scene-5-ai-multi-provider/) | Gemini target · RR · failover | ~30분 |
-| [6 Claude Code backend](./workshop/scene-6-claude-code-backend/) | Claude → Konnect → 허브 `/v1/messages` | ~25분 |
+| [0 Orientation](./docs/scene-0-orientation/) | Konnect · Serverless · 패킷 env | ~25분 |
+| [1 Services & Routes](./docs/scene-1-services-routes/) | httpbin Service / Route | ~25분 |
+| [2 Plugin](./docs/scene-2-plugin/) | 기본 플러그인 | ~25분 |
+| [3 Auth](./docs/scene-3-auth/) | Consumer + key-auth | ~25분 |
+| [4 AI Proxy → OpenAI](./docs/scene-4-ai-proxy-openai/) | AI Proxy Advanced → `/openai` | ~45분 |
+| [5 Multi-provider LB](./docs/scene-5-ai-multi-provider/) | Gemini target · RR · failover | ~30분 |
+| [6 Claude Code backend](./docs/scene-6-claude-code-backend/) | Claude → Konnect → 허브 `/v1/messages` | ~25분 |
 
-합계 약 3.5시간. 상세 진행은 [`workshop/`](./workshop/)을 따릅니다.
+합계 약 3.5시간. 상세 진행은 [`docs/`](./docs/)을 따릅니다.
 
 ## 실습자 패킷 (운영자 배포)
 

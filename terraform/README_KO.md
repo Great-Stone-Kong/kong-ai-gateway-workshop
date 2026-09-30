@@ -2,7 +2,7 @@
 
 AWS EC2에서 Kong Gateway Enterprise **3.15**를 **DB-less**로 올려 공유 Workshop LLM API 허브를 운영합니다.
 
-워크샵 시나리오는 [`../README_KO.md`](../README_KO.md), 실습 진행은 [`../workshop/`](../workshop/)을 참고합니다.
+워크샵 시나리오는 [`../README_KO.md`](../README_KO.md), 실습 진행은 [`../docs/`](../docs/)을 참고합니다.
 
 ## 목적
 

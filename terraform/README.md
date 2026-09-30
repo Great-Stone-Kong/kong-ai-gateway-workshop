@@ -2,7 +2,7 @@
 
 Runs Kong Gateway Enterprise **3.15** on AWS EC2 in **DB-less** mode as the shared Workshop LLM API hub.
 
-Workshop structure: [`../README.md`](../README.md). Student labs: [`../workshop/`](../workshop/).
+Workshop structure: [`../README.md`](../README.md). Student labs: [`../docs/`](../docs/).
 
 ## Purpose
 

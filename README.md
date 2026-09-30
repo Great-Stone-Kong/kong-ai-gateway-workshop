@@ -12,7 +12,7 @@ Students build API Gateway and AI Proxy on **Konnect Serverless**, and call a sh
 
 | Path | Role |
 |---|---|
-| [`workshop/`](./workshop/) | Student scenarios (Scenes 0–6) |
+| [`docs/`](./docs/) | Student scenarios (Scenes 0–6) |
 | [`terraform/`](./terraform/) | Operator shared LLM hub (EC2 Kong EE DB-less) |
 
 ```text
@@ -29,22 +29,22 @@ Operator
 
 | Audience | Work | Docs |
 |---|---|---|
-| **Student** | Konnect Serverless + AI Proxy | [`workshop/README.md`](./workshop/README.md) |
+| **Student** | Konnect Serverless + AI Proxy | [`docs/README.md`](./docs/README.md) |
 | **Operator** | Hub apply + packet distribution | [`terraform/README.md`](./terraform/README.md) |
 
 ## Scenarios
 
 | Scene | Focus | Time |
 |---|---|---|
-| [0 Orientation](./workshop/scene-0-orientation/) | Konnect · Serverless · packet env | ~25 min |
-| [1 Services & Routes](./workshop/scene-1-services-routes/) | httpbin Service / Route | ~25 min |
-| [2 Plugin](./workshop/scene-2-plugin/) | Basic plugins | ~25 min |
-| [3 Auth](./workshop/scene-3-auth/) | Consumer + key-auth | ~25 min |
-| [4 AI Proxy → OpenAI](./workshop/scene-4-ai-proxy-openai/) | AI Proxy Advanced → `/openai` | ~45 min |
-| [5 Multi-provider LB](./workshop/scene-5-ai-multi-provider/) | Gemini target · RR · failover | ~30 min |
-| [6 Claude Code backend](./workshop/scene-6-claude-code-backend/) | Claude → Konnect → hub `/v1/messages` | ~25 min |
+| [0 Orientation](./docs/scene-0-orientation/) | Konnect · Serverless · packet env | ~25 min |
+| [1 Services & Routes](./docs/scene-1-services-routes/) | httpbin Service / Route | ~25 min |
+| [2 Plugin](./docs/scene-2-plugin/) | Basic plugins | ~25 min |
+| [3 Auth](./docs/scene-3-auth/) | Consumer + key-auth | ~25 min |
+| [4 AI Proxy → OpenAI](./docs/scene-4-ai-proxy-openai/) | AI Proxy Advanced → `/openai` | ~45 min |
+| [5 Multi-provider LB](./docs/scene-5-ai-multi-provider/) | Gemini target · RR · failover | ~30 min |
+| [6 Claude Code backend](./docs/scene-6-claude-code-backend/) | Claude → Konnect → hub `/v1/messages` | ~25 min |
 
-About 3.5 hours total. Follow [`workshop/`](./workshop/) for lab steps.
+About 3.5 hours total. Follow [`docs/`](./docs/) for lab steps.
 
 ## Student packet (operator distributes)
 
