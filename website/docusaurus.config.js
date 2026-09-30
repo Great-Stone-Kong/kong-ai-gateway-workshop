@@ -13,7 +13,7 @@ const config = {
   organizationName: 'Great-Stone-Kong',
   projectName: 'kong-ai-gateway-workshop',
   deploymentBranch: 'gh-pages',
-  trailingSlash: false,
+  trailingSlash: true,
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
