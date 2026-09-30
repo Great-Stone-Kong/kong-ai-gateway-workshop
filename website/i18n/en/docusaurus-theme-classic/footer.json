@@ -15,10 +15,6 @@
     "message": "Scene 0",
     "description": "The label of footer link with label=Scene 0 linking to /docs/scene-0-orientation"
   },
-  "link.item.label.슬라이드": {
-    "message": "Slides",
-    "description": "The label of footer link with label=슬라이드 linking to /docs/slides"
-  },
   "link.item.label.GitHub": {
     "message": "GitHub",
     "description": "The label of footer link with label=GitHub linking to https://github.com/Great-Stone-Kong/kong-ai-gateway-workshop"

@@ -18,7 +18,6 @@ const sidebars = {
         'scene-6-claude-code-backend/index',
       ],
     },
-    'slides',
   ],
 };
 

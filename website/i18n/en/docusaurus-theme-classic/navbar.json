@@ -4,16 +4,12 @@
     "description": "The title in the navbar"
   },
   "logo.alt": {
-    "message": "Kong AI Gateway Workshop",
+    "message": "Kong",
     "description": "The alt text of navbar logo"
   },
   "item.label.실습": {
     "message": "Labs",
     "description": "Navbar item with label 실습"
-  },
-  "item.label.슬라이드": {
-    "message": "Slides",
-    "description": "Navbar item with label 슬라이드"
   },
   "item.label.GitHub": {
     "message": "GitHub",

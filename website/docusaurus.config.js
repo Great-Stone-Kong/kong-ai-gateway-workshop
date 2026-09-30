@@ -5,7 +5,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'Kong AI Gateway Workshop',
   tagline: 'Konnect Serverless + Workshop LLM Hub',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
 
   url: 'https://great-stone-kong.github.io',
   baseUrl: '/kong-ai-gateway-workshop/',
@@ -53,15 +53,15 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/kong-logomark.png',
       colorMode: {
         respectPrefersColorScheme: true,
       },
       navbar: {
         title: 'Kong AI Gateway Workshop',
         logo: {
-          alt: 'Kong AI Gateway Workshop',
-          src: 'img/logo.svg',
+          alt: 'Kong',
+          src: 'img/kong-logomark.png',
         },
         items: [
           {
@@ -69,12 +69,6 @@ const config = {
             sidebarId: 'workshopSidebar',
             position: 'left',
             label: '실습',
-          },
-          {
-            type: 'doc',
-            docId: 'slides',
-            position: 'left',
-            label: '슬라이드',
           },
           {
             type: 'localeDropdown',
@@ -95,7 +89,6 @@ const config = {
             items: [
               {label: '소개', to: '/docs/intro'},
               {label: 'Scene 0', to: '/docs/scene-0-orientation'},
-              {label: '슬라이드', to: '/docs/slides'},
             ],
           },
           {
