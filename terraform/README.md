@@ -15,6 +15,7 @@ Workshop structure: [`../README.md`](../README.md). Student labs: [`../website/d
 |---|---|
 | Terraform | This directory |
 | Declarative config | `templates/kong.yml.tftpl` |
+| Smoke-test template | `templates/smoke-test.sh.tftpl` → `.generated/smoke-test.sh` |
 | Bootstrap | `scripts/install-kong.sh` |
 
 ## How it is applied
@@ -50,6 +51,7 @@ terraform apply
 | `anthropic_base_url` | Hub base for direct Claude Code checks |
 | `admin_url` / `manager_url` | Admin `:8001` / Manager `:8002` (operator /24) |
 | `workshop_apikey` | Shared workshop `apikey` (`sk-kong-workshop`) |
+| `smoke_test_script` | Smoke script path with apply-time EIP |
 | `ssh_private_key_path` | Generated SSH key |
 | `operator_ip` / `operator_cidr` | checkip and SG `/24` |
 
@@ -68,25 +70,12 @@ WORKSHOP_LLM_APIKEY=sk-kong-workshop
 
 ## Smoke tests
 
+After apply, Terraform writes a script with the current EIP. It calls `/openai`, `/gemini`, and `/v1/messages` and checks HTTP 200 plus response body.
+
 ```bash
-PROXY=$(terraform output -raw proxy_url)
-KEY=sk-kong-workshop
-
-curl -sS "$PROXY/openai" \
-  -H "apikey: $KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"messages":[{"role":"user","content":"Say hello in one sentence."}]}'
-
-curl -sS "$PROXY/gemini" \
-  -H "apikey: $KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"messages":[{"role":"user","content":"Say hello in one sentence."}]}'
-
-curl -sS "$PROXY/v1/messages" \
-  -H "apikey: $KEY" \
-  -H "anthropic-version: 2023-06-01" \
-  -H "Content-Type: application/json" \
-  -d '{"model":"claude-sonnet-4-6","max_tokens":64,"messages":[{"role":"user","content":"Say hello in one sentence."}]}'
+./.generated/smoke-test.sh
+# or
+$(terraform output -raw smoke_test_script)
 ```
 
 ## Destroy

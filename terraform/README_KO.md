@@ -15,6 +15,7 @@ AWS EC2에서 Kong Gateway Enterprise **3.15**를 **DB-less**로 올려 공유 W
 |---|---|
 | Terraform | 이 디렉터리 |
 | Declarative 설정 | `templates/kong.yml.tftpl` |
+| 스모크 테스트 템플릿 | `templates/smoke-test.sh.tftpl` → `.generated/smoke-test.sh` |
 | 부트스트랩 | `scripts/install-kong.sh` |
 
 ## 적용 방식
@@ -42,6 +43,7 @@ export TF_VAR_openai_api_key="$OPENAI_API_KEY"
 export TF_VAR_gemini_api_key="$GEMINI_API_KEY"
 export TF_VAR_kong_license_path="$KONG_LICENSE_PATH"
 unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_PROFILE AWS_DEFAULT_REGION AWS_REGION
+
 # cp terraform.tfvars.example terraform.tfvars
 # openai_api_key, gemini_api_key, kong_license_path 설정
 # 필요 시 aws_profile = "your-aws-sso-profile" (미설정 시 기본 credential chain)
@@ -59,6 +61,7 @@ terraform apply
 | `anthropic_base_url` | Claude Code 허브 직접 검증 시 base |
 | `admin_url` / `manager_url` | Admin `:8001` / Manager `:8002` (운영자 /24) |
 | `workshop_apikey` | 공유 실습 `apikey` (`sk-kong-workshop`) |
+| `smoke_test_script` | apply 시점 EIP가 반영된 스모크 스크립트 경로 |
 | `ssh_private_key_path` | 생성 SSH 키 |
 | `operator_ip` / `operator_cidr` | checkip 및 SG `/24` |
 
@@ -77,25 +80,12 @@ WORKSHOP_LLM_APIKEY=sk-kong-workshop
 
 ## 스모크 테스트
 
+apply 후 EIP가 박힌 스크립트가 생성됩니다. `/openai`, `/gemini`, `/v1/messages`를 호출해 HTTP 200과 응답 본문을 확인합니다.
+
 ```bash
-PROXY=$(terraform output -raw proxy_url)
-KEY=sk-kong-workshop
-
-curl -sS "$PROXY/openai" \
-  -H "apikey: $KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"messages":[{"role":"user","content":"Say hello in one sentence."}]}'
-
-curl -sS "$PROXY/gemini" \
-  -H "apikey: $KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"messages":[{"role":"user","content":"Say hello in one sentence."}]}'
-
-curl -sS "$PROXY/v1/messages" \
-  -H "apikey: $KEY" \
-  -H "anthropic-version: 2023-06-01" \
-  -H "Content-Type: application/json" \
-  -d '{"model":"claude-sonnet-4-6","max_tokens":64,"messages":[{"role":"user","content":"Say hello in one sentence."}]}'
+./.generated/smoke-test.sh
+# 또는
+$(terraform output -raw smoke_test_script)
 ```
 
 ## 삭제

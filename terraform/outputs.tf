@@ -63,6 +63,11 @@ output "workshop_apikey" {
   value       = "sk-kong-workshop"
 }
 
+output "smoke_test_script" {
+  description = "Generated vendor smoke-test script (EIP baked in at apply)"
+  value       = local_file.smoke_test.filename
+}
+
 output "kong_bootstrap_id" {
   description = "terraform_data.kong_install id (changes when bootstrap re-runs)"
   value       = terraform_data.kong_install.id
