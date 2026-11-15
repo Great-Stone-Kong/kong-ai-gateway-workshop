@@ -28,10 +28,19 @@ Students build API Gateway and AI Proxy on **Konnect Serverless**, and call a sh
 
 ## Student packet (operator distributes)
 
+Replace `<host>` with the Workshop LLM hub IP from the instructor (operator).
+
 ```bash
-WORKSHOP_LLM_OPENAI_URL=http://<eip>:8000/openai
-WORKSHOP_LLM_GEMINI_URL=http://<eip>:8000/gemini
-WORKSHOP_LLM_BASE_URL=http://<eip>:8000
+# Template
+WORKSHOP_LLM_OPENAI_URL=http://<host>:8000/openai
+WORKSHOP_LLM_GEMINI_URL=http://<host>:8000/gemini
+WORKSHOP_LLM_BASE_URL=http://<host>:8000
+WORKSHOP_LLM_APIKEY=sk-kong-workshop
+
+# Example when the instructor IP is 54.180.12.34
+WORKSHOP_LLM_OPENAI_URL=http://54.180.12.34:8000/openai
+WORKSHOP_LLM_GEMINI_URL=http://54.180.12.34:8000/gemini
+WORKSHOP_LLM_BASE_URL=http://54.180.12.34:8000
 WORKSHOP_LLM_APIKEY=sk-kong-workshop
 ```
 

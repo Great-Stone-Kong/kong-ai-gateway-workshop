@@ -40,12 +40,14 @@ flowchart LR
    - Route type : `llm/v1/chat`
    - Auth 활성화
      - Header name : `apikey`
-     - Header value : 워크샵을 위한 apikey를 입력합니다.
+     - Header value : 강사 패킷의 apikey (`sk-kong-workshop`)
    - Model
      - Provider : `openai`
      - Name : `gemini-2.5-flash-lite`
    - Options 활성화
-     - Upstream URL : 워크샵을 위한 Gemini URL
+     - Upstream URL : 강사 패킷의 Gemini URL (`$WORKSHOP_LLM_GEMINI_URL`)
+       - 형식: `http://<host>:8000/gemini` (`<host>` = 강사가 알려준 IP)
+       - 예: `http://54.180.12.34:8000/gemini`
 3. Balancer (Plugin configuration 설정 최상단)
    - Algorithm을 확인 합니다.(기본  `round-robin`)
 4. `Save`

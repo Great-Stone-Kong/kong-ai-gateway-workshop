@@ -45,8 +45,9 @@ curl -sS --max-time 60 "$WORKSHOP_LLM_BASE_URL/v1/messages" \
 
 Service URL is the **hub base**. The `127.0.0.1:65535` placeholder breaks upstream on Serverless (`invalid response` / 502).
 
-1. Full URL: `$WORKSHOP_LLM_BASE_URL`  
-   Example: `http://<eip>:8000`
+1. Full URL: `$WORKSHOP_LLM_BASE_URL` (`<host>` = IP from the instructor)
+   - Template: `http://<host>:8000`
+   - Example: `http://54.180.12.34:8000`
 2. Route Paths: `/v1/messages`, Strip path **off**
 3. `Save`
 
@@ -67,8 +68,9 @@ Service URL is the **hub base**. The `127.0.0.1:65535` placeholder breaks upstre
      - Name: `claude-sonnet-4-6`
    - Options
      - Anthropic version: `2023-06-01`
-     - Upstream URL: `$WORKSHOP_LLM_BASE_URL/v1/messages`  
-       Example: `http://<eip>:8000/v1/messages`
+     - Upstream URL: `$WORKSHOP_LLM_BASE_URL/v1/messages`
+       - Template: `http://<host>:8000/v1/messages`
+       - Example: `http://54.180.12.34:8000/v1/messages`
    - Show additional settings
      - Max request body size: `524288`
      - LLM format: **`anthropic`**

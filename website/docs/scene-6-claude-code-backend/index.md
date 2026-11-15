@@ -45,8 +45,9 @@ curl -sS --max-time 60 "$WORKSHOP_LLM_BASE_URL/v1/messages" \
 
 Service URL은 **허브 base**입니다. `127.0.0.1:65535` placeholder는 Serverless에서 upstream 연결이 깨져 `invalid response`(502)가 납니다.
 
-1. Full URL: `$WORKSHOP_LLM_BASE_URL`  
-   예: `http://<eip>:8000`
+1. Full URL: `$WORKSHOP_LLM_BASE_URL` (`<host>` = 강사가 알려준 IP)
+   - 형식: `http://<host>:8000`
+   - 예: `http://54.180.12.34:8000`
 2. Route Paths: `/v1/messages`, `Strip path` **비활성**
 3. `Save`
 
@@ -67,8 +68,9 @@ Service URL은 **허브 base**입니다. `127.0.0.1:65535` placeholder는 Server
      - Name: `claude-sonnet-4-6`
    - Options
      - Anthropic version: `2023-06-01` 
-     - Upstream URL: `$WORKSHOP_LLM_BASE_URL/v1/messages`  
-       예: `http://<eip>:8000/v1/messages`
+     - Upstream URL: `$WORKSHOP_LLM_BASE_URL/v1/messages`
+       - 형식: `http://<host>:8000/v1/messages`
+       - 예: `http://54.180.12.34:8000/v1/messages`
      
    - Show additional settings
      - Max request body size: `524288`

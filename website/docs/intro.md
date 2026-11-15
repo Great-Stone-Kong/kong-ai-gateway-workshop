@@ -31,10 +31,11 @@ export DECK_KONNECT_TOKEN=<your-personal-access-token>
 export DECK_KONNECT_ADDR=https://us.api.konghq.com
 export DECK_KONNECT_CONTROL_PLANE_NAME=<your-serverless-gw-name>
 
-# 강사 패킷
-export WORKSHOP_LLM_OPENAI_URL=...
-export WORKSHOP_LLM_GEMINI_URL=...
-export WORKSHOP_LLM_BASE_URL=...
+# 강사 패킷 — <host>에는 강사가 알려준 Workshop LLM 허브 IP를 넣습니다.
+# 예: 강사 IP가 54.180.12.34 인 경우
+export WORKSHOP_LLM_OPENAI_URL=http://54.180.12.34:8000/openai
+export WORKSHOP_LLM_GEMINI_URL=http://54.180.12.34:8000/gemini
+export WORKSHOP_LLM_BASE_URL=http://54.180.12.34:8000
 export WORKSHOP_LLM_APIKEY=sk-kong-workshop
 ```
 
@@ -70,12 +71,19 @@ export WORKSHOP_LLM_APIKEY=sk-kong-workshop
 
 ## 운영자 부록
 
-실습자에게는 Workshop LLM 패킷만 필요합니다. 공유 허브는 [`../terraform/README_KO.md`](https://github.com/Great-Stone-Kong/kong-ai-gateway-workshop/tree/main/terraform)로 기동한 뒤 다음을 배포합니다.
+실습자에게는 Workshop LLM 패킷만 필요합니다. 공유 허브는 [`../terraform/README_KO.md`](https://github.com/Great-Stone-Kong/kong-ai-gateway-workshop/tree/main/terraform)로 기동한 뒤, `terraform output`의 공개 IP를 `<host>`에 넣어 배포합니다.
 
 ```bash
-WORKSHOP_LLM_OPENAI_URL=http://<hub-host>:8000/openai
-WORKSHOP_LLM_GEMINI_URL=http://<hub-host>:8000/gemini
-WORKSHOP_LLM_BASE_URL=http://<hub-host>:8000
+# 형식 (<host> = 허브 EIP)
+WORKSHOP_LLM_OPENAI_URL=http://<host>:8000/openai
+WORKSHOP_LLM_GEMINI_URL=http://<host>:8000/gemini
+WORKSHOP_LLM_BASE_URL=http://<host>:8000
+WORKSHOP_LLM_APIKEY=sk-kong-workshop
+
+# 배포 예시 (EIP가 54.180.12.34 인 경우)
+WORKSHOP_LLM_OPENAI_URL=http://54.180.12.34:8000/openai
+WORKSHOP_LLM_GEMINI_URL=http://54.180.12.34:8000/gemini
+WORKSHOP_LLM_BASE_URL=http://54.180.12.34:8000
 WORKSHOP_LLM_APIKEY=sk-kong-workshop
 ```
 

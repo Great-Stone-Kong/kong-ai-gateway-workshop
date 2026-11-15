@@ -47,10 +47,19 @@ Kong Konnect 실습과 공유 **Workshop LLM** 허브로 구성된 AI Gateway �
 
 ## 실습자 패킷 (운영자 배포)
 
+`<host>`에는 강사(운영자)가 알려준 Workshop LLM 허브 IP를 넣습니다.
+
 ```bash
-WORKSHOP_LLM_OPENAI_URL=http://<eip>:8000/openai
-WORKSHOP_LLM_GEMINI_URL=http://<eip>:8000/gemini
-WORKSHOP_LLM_BASE_URL=http://<eip>:8000
+# 형식
+WORKSHOP_LLM_OPENAI_URL=http://<host>:8000/openai
+WORKSHOP_LLM_GEMINI_URL=http://<host>:8000/gemini
+WORKSHOP_LLM_BASE_URL=http://<host>:8000
+WORKSHOP_LLM_APIKEY=sk-kong-workshop
+
+# 입력 예시 (강사 IP가 54.180.12.34 인 경우)
+WORKSHOP_LLM_OPENAI_URL=http://54.180.12.34:8000/openai
+WORKSHOP_LLM_GEMINI_URL=http://54.180.12.34:8000/gemini
+WORKSHOP_LLM_BASE_URL=http://54.180.12.34:8000
 WORKSHOP_LLM_APIKEY=sk-kong-workshop
 ```
 

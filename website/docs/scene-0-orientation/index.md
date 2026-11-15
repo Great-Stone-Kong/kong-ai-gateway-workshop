@@ -35,3 +35,23 @@ Konnect **Serverless** 게이트웨이를 준비하고, AI Gateway 사용을 확
 ![Proxy URL](/img/scene-0-orientation/scene-0-orientation-2.png)
 
 ![Proxy URL](/img/scene-0-orientation/scene-0-orientation-3.png)
+
+## Workshop 패킷
+
+강사가 알려준 Workshop LLM 허브 IP를 `<host>`에 넣어 셸에 로드합니다.
+
+```bash
+# 형식
+export WORKSHOP_LLM_OPENAI_URL=http://<host>:8000/openai
+export WORKSHOP_LLM_GEMINI_URL=http://<host>:8000/gemini
+export WORKSHOP_LLM_BASE_URL=http://<host>:8000
+export WORKSHOP_LLM_APIKEY=sk-kong-workshop
+
+# 입력 예시 (강사 IP가 54.180.12.34 인 경우)
+export WORKSHOP_LLM_OPENAI_URL=http://54.180.12.34:8000/openai
+export WORKSHOP_LLM_GEMINI_URL=http://54.180.12.34:8000/gemini
+export WORKSHOP_LLM_BASE_URL=http://54.180.12.34:8000
+export WORKSHOP_LLM_APIKEY=sk-kong-workshop
+
+export KONNECT_PROXY_URL=<konnect-overview의-proxy-url>
+```

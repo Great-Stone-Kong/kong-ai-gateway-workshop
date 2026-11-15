@@ -35,3 +35,23 @@ You create entities in **your** Konnect organization. Traffic goes through the *
 ![Proxy URL](/img/scene-0-orientation/scene-0-orientation-2.png)
 
 ![Proxy URL](/img/scene-0-orientation/scene-0-orientation-3.png)
+
+## Workshop packet
+
+Load the Workshop LLM hub IP from the instructor into `<host>`.
+
+```bash
+# Template
+export WORKSHOP_LLM_OPENAI_URL=http://<host>:8000/openai
+export WORKSHOP_LLM_GEMINI_URL=http://<host>:8000/gemini
+export WORKSHOP_LLM_BASE_URL=http://<host>:8000
+export WORKSHOP_LLM_APIKEY=sk-kong-workshop
+
+# Example when the instructor IP is 54.180.12.34
+export WORKSHOP_LLM_OPENAI_URL=http://54.180.12.34:8000/openai
+export WORKSHOP_LLM_GEMINI_URL=http://54.180.12.34:8000/gemini
+export WORKSHOP_LLM_BASE_URL=http://54.180.12.34:8000
+export WORKSHOP_LLM_APIKEY=sk-kong-workshop
+
+export KONNECT_PROXY_URL=<proxy-url-from-konnect-overview>
+```

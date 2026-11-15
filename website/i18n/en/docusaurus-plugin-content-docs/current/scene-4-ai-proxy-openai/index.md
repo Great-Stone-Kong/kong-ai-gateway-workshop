@@ -41,8 +41,9 @@ Confirm a plain API Gateway can reach the LLM hub. The client sends `apikey` its
 1. `Gateway services` → `+ New gateway service`
 2. Service endpoint
    - Select `Full URL`
-   - Enter `$WORKSHOP_LLM_OPENAI_URL`  
-     (example: `http://<host>:8000/openai` — the **full** URL including path)
+   - Enter the instructor packet URL (**full** URL including path)
+     - Template: `http://<host>:8000/openai` (`<host>` = IP from the instructor)
+     - Example: if the instructor IP is `54.180.12.34` → `http://54.180.12.34:8000/openai`
 3. General information
    - Name example: `workshop-llm-plain`
 4. `Save`

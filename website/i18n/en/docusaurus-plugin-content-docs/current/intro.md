@@ -31,10 +31,11 @@ export DECK_KONNECT_TOKEN=<your-personal-access-token>
 export DECK_KONNECT_ADDR=https://us.api.konghq.com
 export DECK_KONNECT_CONTROL_PLANE_NAME=<your-serverless-gw-name>
 
-# From instructor packet
-export WORKSHOP_LLM_OPENAI_URL=...
-export WORKSHOP_LLM_GEMINI_URL=...
-export WORKSHOP_LLM_BASE_URL=...
+# Instructor packet — replace <host> with the Workshop LLM hub IP from the instructor.
+# Example when the instructor IP is 54.180.12.34:
+export WORKSHOP_LLM_OPENAI_URL=http://54.180.12.34:8000/openai
+export WORKSHOP_LLM_GEMINI_URL=http://54.180.12.34:8000/gemini
+export WORKSHOP_LLM_BASE_URL=http://54.180.12.34:8000
 export WORKSHOP_LLM_APIKEY=sk-kong-workshop
 ```
 
@@ -70,12 +71,19 @@ You (curl / SDK / Claude Code)
 
 ## Operator appendix
 
-Students only need the Workshop LLM packet. Operators who run the shared hub should follow [`../terraform/README.md`](https://github.com/Great-Stone-Kong/kong-ai-gateway-workshop/tree/main/terraform), then hand out:
+Students only need the Workshop LLM packet. Operators who run the shared hub should follow [`../terraform/README.md`](https://github.com/Great-Stone-Kong/kong-ai-gateway-workshop/tree/main/terraform), then put the public IP from `terraform output` into `<host>` and hand out:
 
 ```bash
-WORKSHOP_LLM_OPENAI_URL=http://<hub-host>:8000/openai
-WORKSHOP_LLM_GEMINI_URL=http://<hub-host>:8000/gemini
-WORKSHOP_LLM_BASE_URL=http://<hub-host>:8000
+# Template (<host> = hub EIP)
+WORKSHOP_LLM_OPENAI_URL=http://<host>:8000/openai
+WORKSHOP_LLM_GEMINI_URL=http://<host>:8000/gemini
+WORKSHOP_LLM_BASE_URL=http://<host>:8000
+WORKSHOP_LLM_APIKEY=sk-kong-workshop
+
+# Example when the EIP is 54.180.12.34
+WORKSHOP_LLM_OPENAI_URL=http://54.180.12.34:8000/openai
+WORKSHOP_LLM_GEMINI_URL=http://54.180.12.34:8000/gemini
+WORKSHOP_LLM_BASE_URL=http://54.180.12.34:8000
 WORKSHOP_LLM_APIKEY=sk-kong-workshop
 ```
 

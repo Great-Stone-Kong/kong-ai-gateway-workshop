@@ -40,7 +40,9 @@ flowchart LR
 1. `Gateway services` → `+ New gateway service`
 2. Service endpoint
    - `Full URL` 선택
-   - Full URL에 제공된 URL 입력 (예: `http://<host>:8000/openai` - path가 포함된 **전체** URL)
+   - Full URL에 강사 패킷 URL 입력 (path 포함 **전체** URL)
+     - 형식: `http://<host>:8000/openai` (`<host>` = 강사가 알려준 IP)
+     - 예: 강사 IP가 `54.180.12.34`이면 → `http://54.180.12.34:8000/openai`
 3. General information
    - Name 예: `workshop-llm-plain`
 4. `Save`

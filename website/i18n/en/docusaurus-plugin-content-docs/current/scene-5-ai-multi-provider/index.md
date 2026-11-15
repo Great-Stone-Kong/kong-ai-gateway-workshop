@@ -33,9 +33,11 @@ Keep the OpenAI target, add one Gemini target, and set `round-robin`. Different 
 1. `/ai/openai` → `Plugins` → `AI Proxy Advanced` → Edit
 2. Targets → `+` to add a **second** target
    - Route type: `llm/v1/chat`
-   - Auth: Header name `apikey`, Header value `$WORKSHOP_LLM_APIKEY`, `allow_override` false
+   - Auth: Header name `apikey`, Header value `$WORKSHOP_LLM_APIKEY` (instructor packet), `allow_override` false
    - Model: Provider `openai`, Name `gemini-2.5-flash-lite`
    - Options → Upstream URL: `$WORKSHOP_LLM_GEMINI_URL` (**full** URL)
+     - Template: `http://<host>:8000/gemini` (`<host>` = IP from the instructor)
+     - Example: `http://54.180.12.34:8000/gemini`
 3. Leave the existing OpenAI target as-is (`upstream_url`: `$WORKSHOP_LLM_OPENAI_URL`)
 4. Show additional settings → Balancer
    - Algorithm: `round-robin`
